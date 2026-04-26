@@ -21,7 +21,6 @@ bool D3D11Renderer::init(HWND hwnd, int width, int height) {
     width_ = width;
     height_ = height;
 
-    // 创建设备和交换链
     DXGI_SWAP_CHAIN_DESC1 scd = {};
     scd.Width = width;
     scd.Height = height;
@@ -38,48 +37,55 @@ bool D3D11Renderer::init(HWND hwnd, int width, int height) {
 #endif
 
     ComPtr<IDXGIFactory2> factory;
-    CreateDXGIFactory1(IID_PPV_ARGS(&factory));
+    if (FAILED(CreateDXGIFactory1(IID_PPV_ARGS(&factory)))) return false;
 
-    D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, flags,
+    if (FAILED(D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, flags,
                       &featureLevel, 1, D3D11_SDK_VERSION,
-                      &device_, nullptr, &context_);
+                      &device_, nullptr, &context_))) return false;
 
-    factory->CreateSwapChainForHwnd(device_.Get(), hwnd, &scd, nullptr, nullptr, &swap_chain_);
+    if (FAILED(factory->CreateSwapChainForHwnd(device_.Get(), hwnd, &scd, nullptr, nullptr, &swap_chain_))) return false;
 
-    // 渲染目标
     ComPtr<ID3D11Texture2D> backbuffer;
-    swap_chain_->GetBuffer(0, IID_PPV_ARGS(&backbuffer));
-    device_->CreateRenderTargetView(backbuffer.Get(), nullptr, &rtv_);
+    if (FAILED(swap_chain_->GetBuffer(0, IID_PPV_ARGS(&backbuffer)))) return false;
+    if (FAILED(device_->CreateRenderTargetView(backbuffer.Get(), nullptr, &rtv_))) return false;
 
-    // 视口
+    // depth buffer for correct multi-screen occlusion
+    D3D11_TEXTURE2D_DESC dtd = {};
+    dtd.Width = width;
+    dtd.Height = height;
+    dtd.MipLevels = 1;
+    dtd.ArraySize = 1;
+    dtd.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+    dtd.SampleDesc.Count = 1;
+    dtd.Usage = D3D11_USAGE_DEFAULT;
+    dtd.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+    if (FAILED(device_->CreateTexture2D(&dtd, nullptr, &depth_texture_))) return false;
+    if (FAILED(device_->CreateDepthStencilView(depth_texture_.Get(), nullptr, &dsv_))) return false;
+
     D3D11_VIEWPORT vp = {0, 0, (float)width, (float)height, 0, 1};
     context_->RSSetViewports(1, &vp);
 
-    // 投影矩阵 (FOV 43.5° 匹配 StarV View)
     projection_ = rtstarv::mat4_perspective(43.5f, (float)width / height, 0.1f, 100.0f);
 
     if (!create_shaders()) return false;
     if (!create_quad_geometry()) return false;
 
-    // 采样器
     D3D11_SAMPLER_DESC sd = {};
     sd.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
     sd.AddressU = sd.AddressV = sd.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
-    device_->CreateSamplerState(&sd, &sampler_);
+    if (FAILED(device_->CreateSamplerState(&sd, &sampler_))) return false;
 
-    // 常量缓冲区
     D3D11_BUFFER_DESC cbd = {};
     cbd.ByteWidth = sizeof(CBData);
     cbd.Usage = D3D11_USAGE_DYNAMIC;
     cbd.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
     cbd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-    device_->CreateBuffer(&cbd, nullptr, &constant_buffer_);
+    if (FAILED(device_->CreateBuffer(&cbd, nullptr, &constant_buffer_))) return false;
 
     return true;
 }
 
 bool D3D11Renderer::create_shaders() {
-    // 编译内嵌 shader（避免运行时加载 .hlsl 文件）
     const char vs_src[] = R"(
         cbuffer CB : register(b0) { float4x4 mvp; float4 border_color; };
         struct VS { float3 pos : POSITION; float2 uv : TEXCOORD0; };
@@ -120,12 +126,11 @@ bool D3D11Renderer::create_shaders() {
 }
 
 bool D3D11Renderer::create_quad_geometry() {
-    // 单位 quad：中心在原点，宽高 1x1，法线朝 +Z
     Vertex verts[] = {
-        {{-0.5f, -0.5f, 0}, {0, 1}}, // 左下
-        {{-0.5f,  0.5f, 0}, {0, 0}}, // 左上
-        {{ 0.5f,  0.5f, 0}, {1, 0}}, // 右上
-        {{ 0.5f, -0.5f, 0}, {1, 1}}, // 右下
+        {{-0.5f, -0.5f, 0}, {0, 1}},
+        {{-0.5f,  0.5f, 0}, {0, 0}},
+        {{ 0.5f,  0.5f, 0}, {1, 0}},
+        {{ 0.5f, -0.5f, 0}, {1, 1}},
     };
     UINT indices[] = {0, 1, 2, 0, 2, 3};
 
@@ -148,13 +153,13 @@ bool D3D11Renderer::create_quad_geometry() {
 
 void D3D11Renderer::begin_frame(float r, float g, float b, float a) {
     float color[] = {r, g, b, a};
-    context_->OMSetRenderTargets(1, rtv_.GetAddressOf(), nullptr);
+    context_->OMSetRenderTargets(1, rtv_.GetAddressOf(), dsv_.Get());
     context_->ClearRenderTargetView(rtv_.Get(), color);
+    context_->ClearDepthStencilView(dsv_.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0);
 }
 
 void D3D11Renderer::set_camera(float yaw_deg, float pitch_deg, float roll_deg) {
     using namespace rtstarv;
-    // View 矩阵 = 摄像机旋转的逆（转置）
     auto ry = mat4_rotation_y(-yaw_deg * DEG2RAD);
     auto rx = mat4_rotation_x(pitch_deg * DEG2RAD);
     auto rz = mat4_rotation_z(roll_deg * DEG2RAD);
@@ -164,7 +169,6 @@ void D3D11Renderer::set_camera(float yaw_deg, float pitch_deg, float roll_deg) {
 void D3D11Renderer::draw_screen_quad(const ScreenTransform& screen, ID3D11ShaderResourceView* texture, bool focused) {
     using namespace rtstarv;
 
-    // 模型矩阵：缩放到屏幕大小 -> 朝向原点 -> 平移到球面位置
     auto scale = Mat4{screen.width,0,0,0, 0,screen.height,0,0, 0,0,1,0, 0,0,0,1};
     auto rot_y = mat4_rotation_y(screen.yaw_deg * DEG2RAD);
     auto rot_x = mat4_rotation_x(-screen.pitch_deg * DEG2RAD);
@@ -173,10 +177,9 @@ void D3D11Renderer::draw_screen_quad(const ScreenTransform& screen, ID3D11Shader
     auto model = mat4_multiply(trans, mat4_multiply(rot_y, mat4_multiply(rot_x, scale)));
     auto mvp = mat4_multiply(projection_, mat4_multiply(view_, model));
 
-    // 更新常量缓冲区
     CBData cb;
     cb.mvp = mvp;
-    cb.border[0] = 1.0f; cb.border[1] = 1.0f; cb.border[2] = 1.0f; // 白色边框
+    cb.border[0] = 1.0f; cb.border[1] = 1.0f; cb.border[2] = 1.0f;
     cb.border[3] = focused ? 0.005f : 0.0f;
 
     D3D11_MAPPED_SUBRESOURCE mapped;
@@ -184,7 +187,6 @@ void D3D11Renderer::draw_screen_quad(const ScreenTransform& screen, ID3D11Shader
     memcpy(mapped.pData, &cb, sizeof(cb));
     context_->Unmap(constant_buffer_.Get(), 0);
 
-    // 绑定管线状态
     context_->IASetInputLayout(input_layout_.Get());
     UINT stride = sizeof(Vertex), offset = 0;
     context_->IASetVertexBuffers(0, 1, vertex_buffer_.GetAddressOf(), &stride, &offset);
@@ -197,17 +199,20 @@ void D3D11Renderer::draw_screen_quad(const ScreenTransform& screen, ID3D11Shader
     context_->PSSetConstantBuffers(0, 1, constant_buffer_.GetAddressOf());
     context_->PSSetSamplers(0, 1, sampler_.GetAddressOf());
 
-    if (texture)
+    if (texture) {
         context_->PSSetShaderResources(0, 1, &texture);
+    } else {
+        ID3D11ShaderResourceView* null_srv = nullptr;
+        context_->PSSetShaderResources(0, 1, &null_srv);
+    }
 
     context_->DrawIndexed(6, 0, 0);
 }
 
 void D3D11Renderer::end_frame() {
-    swap_chain_->Present(0, 0);  // 不等 VSync（120Hz 靠 Sleep 限帧）
+    swap_chain_->Present(0, 0);
 }
 
 void D3D11Renderer::destroy() {
     if (context_) context_->ClearState();
-    // ComPtr 自动释放
 }

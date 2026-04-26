@@ -5,6 +5,7 @@
 #include "screen_capture.h"
 #include "hotkey_manager.h"
 #include "tray_icon.h"
+#include "virtual_display.h"
 #include "rtstarv_imu.h"
 #include <chrono>
 
@@ -14,6 +15,7 @@ struct App::Modules {
     D3D11Renderer renderer;
     ScreenLayout layout;
     ScreenCapture capture;
+    VirtualDisplay vdisplay;
     HotkeyManager hotkeys;
     TrayIcon tray;
 };
@@ -51,6 +53,9 @@ bool App::init(HINSTANCE hInstance) {
         state_.imu_connected = true;
         rtstarv_start(200, 0);
     }
+
+    // 初始化虚拟显示器（可选 — 驱动未安装时优雅降级）
+    modules_->vdisplay.init();
 
     // 初始化屏幕捕获
     modules_->capture.init(modules_->renderer.device());
@@ -142,6 +147,14 @@ void App::on_hotkey(int id) {
     case 11: // 焦点右移
         if (state_.focus_screen < static_cast<int>(state_.layout) - 1) state_.focus_screen++;
         break;
+    case 12: // 焦点上移（6屏：下排→上排，-3）
+        if (state_.layout == LayoutMode::Hex && state_.focus_screen >= 3)
+            state_.focus_screen -= 3;
+        break;
+    case 13: // 焦点下移（6屏：上排→下排，+3）
+        if (state_.layout == LayoutMode::Hex && state_.focus_screen < 3)
+            state_.focus_screen += 3;
+        break;
     }
 }
 
@@ -157,6 +170,7 @@ void App::shutdown() {
     modules_->tray.destroy();
     modules_->hotkeys.destroy();
     modules_->capture.destroy();
+    modules_->vdisplay.destroy();
     modules_->renderer.destroy();
     delete modules_;
     modules_ = nullptr;

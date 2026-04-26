@@ -85,7 +85,7 @@ ID3D11ShaderResourceView* ScreenCapture::get_texture(int display_index) {
 void ScreenCapture::destroy() {
     for (auto& oc : outputs_) {
         if (oc.duplication) {
-            oc.duplication->ReleaseFrame();
+            if (oc.has_frame) oc.duplication->ReleaseFrame();
             oc.duplication.Reset();
         }
     }

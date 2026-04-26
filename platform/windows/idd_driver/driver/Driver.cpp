@@ -40,9 +40,13 @@ NTSTATUS EvtDeviceAdd(WDFDRIVER Driver, PWDFDEVICE_INIT DeviceInit) {
     queueConfig.EvtIoDeviceControl = EvtIoDeviceControl;
     WdfIoQueueCreate(device, &queueConfig, WDF_NO_OBJECT_ATTRIBUTES, nullptr);
 
+    IDDCX_ADAPTER_CAPS caps = {};
+    caps.Size = sizeof(caps);
+    caps.MaxMonitorsSupported = 6;
+
     IDARG_IN_ADAPTER_INIT adapterInit = {};
     adapterInit.WdfDevice = device;
-    adapterInit.pCaps = nullptr;
+    adapterInit.pCaps = &caps;
 
     IDARG_OUT_ADAPTER_INIT adapterOut = {};
     status = IddCxAdapterInitAsync(&adapterInit, &adapterOut);

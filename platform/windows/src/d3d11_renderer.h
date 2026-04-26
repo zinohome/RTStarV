@@ -43,6 +43,8 @@ private:
     ComPtr<ID3D11Buffer> index_buffer_;
     ComPtr<ID3D11Buffer> constant_buffer_;
     ComPtr<ID3D11SamplerState> sampler_;
+    ComPtr<ID3D11Texture2D> depth_texture_;
+    ComPtr<ID3D11DepthStencilView> dsv_;
 
     rtstarv::Mat4 view_;
     rtstarv::Mat4 projection_;

@@ -30,13 +30,66 @@ NTSTATUS EvtMonitorGetDefaultModes(IDDCX_MONITOR Monitor,
     return STATUS_SUCCESS;
 }
 
+static DWORD WINAPI SwapChainThread(LPVOID param) {
+    auto* mon = reinterpret_cast<MonitorContext*>(param);
+    IDDCX_SWAPCHAIN swapchain = mon->swapchain_handle;
+
+    while (mon->running) {
+        IDARG_IN_SWAPCHAINSETDEVICE setDevice = {};
+        setDevice.pDevice = nullptr;
+
+        IDARG_OUT_RELEASEANDACQUIREBUFFER buf = {};
+        HRESULT hr = IddCxSwapChainReleaseAndAcquireBuffer(swapchain, &buf);
+
+        if (SUCCEEDED(hr)) {
+            IddCxSwapChainFinishedProcessingFrame(swapchain);
+        } else if (hr == E_PENDING) {
+            HANDLE waitHandle = IddCxSwapChainGetDirtyTrackerCookie(swapchain);
+            if (waitHandle)
+                WaitForSingleObject(waitHandle, 16);
+            else
+                Sleep(16);
+        } else {
+            break;
+        }
+    }
+    return 0;
+}
+
 NTSTATUS EvtMonitorAssignSwapChain(IDDCX_MONITOR Monitor, const IDARG_IN_SETSWAPCHAIN* pIn) {
     UNREFERENCED_PARAMETER(Monitor);
-    UNREFERENCED_PARAMETER(pIn);
+
+    auto device = WdfObjectGetTypedContext<DeviceContext>(WdfObjectContextGetObject(Monitor));
+    if (!device) return STATUS_SUCCESS;
+
+    for (int i = 0; i < device->monitor_count; i++) {
+        if (device->monitors[i].monitor_handle == Monitor) {
+            device->monitors[i].swapchain_handle = pIn->hSwapChain;
+            device->monitors[i].running = true;
+            device->monitors[i].thread_handle = CreateThread(
+                nullptr, 0, SwapChainThread, &device->monitors[i], 0, nullptr);
+            break;
+        }
+    }
+
     return STATUS_SUCCESS;
 }
 
 NTSTATUS EvtMonitorUnassignSwapChain(IDDCX_MONITOR Monitor) {
-    UNREFERENCED_PARAMETER(Monitor);
+    auto device = WdfObjectGetTypedContext<DeviceContext>(WdfObjectContextGetObject(Monitor));
+    if (!device) return STATUS_SUCCESS;
+
+    for (int i = 0; i < device->monitor_count; i++) {
+        if (device->monitors[i].monitor_handle == Monitor) {
+            device->monitors[i].running = false;
+            if (device->monitors[i].thread_handle) {
+                WaitForSingleObject(device->monitors[i].thread_handle, 1000);
+                CloseHandle(device->monitors[i].thread_handle);
+                device->monitors[i].thread_handle = nullptr;
+            }
+            break;
+        }
+    }
+
     return STATUS_SUCCESS;
 }

@@ -1,3 +1,3 @@
 // platform/windows/resources/app.rc
 #include <windows.h>
-IDI_APP ICON "app.ico"
+101 ICON "app.ico"
