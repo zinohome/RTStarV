@@ -13,7 +13,8 @@ pip install hidapi
 
 ## 探测流程
 
-一共两步，大约 5 分钟。
+一共四步。Step 1-2 已完成（VID/PID 已知，HID 探测已完成）。
+当前进度：**Step 3**。
 
 ---
 
@@ -62,6 +63,53 @@ python usb_probe.py
 **2.4 把以下文件发给开发者：**
 - `probe_report_*.json`（探测报告）
 - `after.txt`（设备列表）
+
+---
+
+### Step 3：第三轮探测（两个脚本，按顺序运行）
+
+前两轮发现标准 HID 无法激活 IMU 数据流。第三轮有两个脚本：
+
+**3A. HID 协议逆向（无需额外安装，约 2 分钟）**
+
+```powershell
+python hid_descriptor_probe.py
+```
+
+这个脚本会：
+- 系统扫描接口 3 的所有 256 个命令 ID，找出哪些会引起不同响应
+- 对有变化的命令做子命令探测
+- 扫描接口 4 的 Output Report ID
+- 长时间监听接口 5（30 秒）
+
+生成 `hid_protocol_probe_*.json`。
+
+**3B. USB 原始探测（需要额外安装，约 1 分钟）**
+
+先安装依赖：
+
+```powershell
+pip install pyusb libusb
+```
+
+然后运行：
+
+```powershell
+python usb_raw_probe.py
+```
+
+这个脚本会：
+- 枚举所有 USB 接口（包括非 HID 的接口 0/1/2）
+- 读取 HID Report Descriptor 原始字节（最关键）
+- 通过 USB 控制传输尝试激活 IMU
+- 直接从 Interrupt IN 端点读取数据
+
+如果报错"未找到设备"，可能需要用 Zadig 替换驱动（脚本会打印详细说明）。
+这种情况下跳过 3B，只跑 3A 即可。
+
+生成 `raw_probe_*.json`。
+
+**3.结果：把所有 json 文件推送到 git。**
 
 ---
 
