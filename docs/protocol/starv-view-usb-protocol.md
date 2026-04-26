@@ -300,9 +300,9 @@ StarV View and Xreal Air share the same SunnyVerse SDK. Key similarities and dif
 
 ### Remaining Questions
 
-1. ~~**IMU sample rate**~~ — **SOLVED**, see section 9 below
+1. ~~**IMU sample rate**~~ — **SOLVED**, see section 9
 2. **Coordinate system** convention (which axis is up/forward)
-3. **Magnetometer data** — not seen in current packets, may need different enable
+3. ~~**Magnetometer data**~~ — **SOLVED**, see section 10
 4. **Timestamp unit** at byte[32-35] — microseconds? milliseconds?
 
 ## 9. Live Validation Results (2026-04-26)
@@ -398,7 +398,7 @@ Sequence: set frequency first (cmd 0x20), then enable IMU (cmd 0x6d).
 
 ### Universal Command Packet Format
 
-All commands share the same 8-byte structure:
+**8-byte commands** (most commands):
 
 ```
 42 SS CC 06 03 RR VV FF
@@ -406,14 +406,124 @@ All commands share the same 8-byte structure:
 │  │  │  │  │  │  └──── value byte (command-specific)
 │  │  │  │  │  └─────── routing byte 3 (selects command type)
 │  │  │  │  └────────── 0x03 routing byte 2 (fixed)
-│  │  │  └───────────── 0x06 routing byte 1 (fixed)
+│  │  │  └───────────── 0x06 routing byte 1 (fixed, payload length)
 │  │  └──────────────── checksum low  (sum of byte[3..6] & 0xFF)
 │  └─────────────────── checksum high (sum of byte[3..6] >> 8)
 └────────────────────── 0x42 magic
 ```
 
+**9-byte commands** (e.g., magnetometer):
+
+```
+42 SS CC 07 03 RR VV XX FF
+│  │  │  │  │  │  │  │  └─ 0xFF terminator
+│  │  │  │  │  │  │  └──── extra byte (command-specific)
+│  │  │  │  │  │  └─────── value byte
+│  │  │  │  │  └────────── routing byte 3
+│  │  │  │  └───────────── 0x03 routing byte 2 (fixed)
+│  │  │  └────────────────  0x07 routing byte 1 (payload length)
+│  │  └──────────────────── checksum low  (sum of byte[3..7] & 0xFF)
+│  └─────────────────────── checksum high (sum of byte[3..7] >> 8)
+└────────────────────────── 0x42 magic
+```
+
 Known routing byte 3 values:
-| RR | Command | Value byte |
-|----|---------|-----------|
-| 0x05 | Set IMU frequency (cmd 0x20) | Frequency code (0x07-0x0B) |
-| 0x07 | Enable/disable IMU (cmd 0x6d) | 0x01=enable, 0x00=disable |
+| RR | Len | Command | Value byte |
+|----|-----|---------|-----------|
+| 0x05 | 8 | Set IMU frequency (cmd 0x20) | Frequency code (0x07-0x0B) |
+| 0x07 | 8 | Enable/disable IMU (cmd 0x6d) | 0x01=enable, 0x00=disable |
+| 0x10 | 9 | Enable/disable magnetometer (cmd 0x15) | 0x01=enable, 0x00=disable (extra byte=0x00) |
+
+## 10. Magnetometer Validation Results (2026-04-26)
+
+### Magnetometer Enable Command (CONFIRMED)
+
+```
+42 00 1b 07 03 10 01 00 ff
+│  │  │  │  │  │  │  │  └─ 0xFF terminator
+│  │  │  │  │  │  │  └──── 0x00 extra byte (fixed)
+│  │  │  │  │  │  └─────── 0x01 enable (0x00 = disable)
+│  │  │  │  │  └────────── 0x10 routing byte 3 (magnetometer)
+│  │  │  │  └───────────── 0x03 routing byte 2
+│  │  │  └────────────────  0x07 payload length (9-byte cmd)
+│  │  └──────────────────── 0x1b checksum low
+│  └─────────────────────── 0x00 checksum high
+└────────────────────────── 0x42 magic
+```
+
+Checksum: `0x07 + 0x03 + 0x10 + 0x01 + 0x00 = 0x001b`
+
+### Magnetometer Data: Extended IMU Packet (CONFIRMED)
+
+Magnetometer data is **embedded in IMU packets**, not sent as a separate packet type.
+Indicated by two fields:
+
+| Field | Normal IMU | IMU + Magnetometer |
+|-------|-----------|-------------------|
+| byte[3] (length) | 0x27 (39) | 0x3b (59) |
+| byte[7] (flags) | 0x03 | 0x33 (bit5+bit4 set = mag flag) |
+
+The extended packet appends 20 bytes of magnetometer data after the standard IMU region:
+
+```
+Offset  Size    Field                   Notes
+────────────────────────────────────────────────────────────
+0       1       magic                   0x42
+1       1       checksum_high           varies
+2       1       checksum_low            varies
+3       1       length                  0x27 (normal) or 0x3b (with mag)
+4       1       category                0x03
+5       1       sub_category            0x02
+6       1       sequence                wrapping counter
+7       1       flags                   0x03 normal, 0x33 with mag
+─── IMU Data (always present) ──────────────────────────────
+8       4       acc_x (float32 LE)      m/s²
+12      4       acc_y (float32 LE)
+16      4       acc_z (float32 LE)
+20      4       gyr_x (float32 LE)      rad/s
+24      4       gyr_y (float32 LE)
+28      4       gyr_z (float32 LE)
+32      4       imu_timestamp (u32 LE)  device clock ticks
+36      2       status                  varies (0x13 0x03 seen)
+38      2       padding                 0x0000
+─── Normal Terminator (byte[7]=0x03) ──────────────────────
+40      1       terminator              0xFF
+41-63   23      padding                 0x00
+─── Magnetometer Extension (byte[7]=0x33) ─────────────────
+40      4       mag_x (float32 LE)      µT (microtesla)
+44      4       mag_y (float32 LE)
+48      4       mag_z (float32 LE)
+52      4       mag_timestamp (u32 LE)  device clock ticks
+56      2       mag_status              same format as byte[36..37]
+58      2       padding                 0x0000
+60      1       terminator              0xFF
+61-63   3       padding                 0x00
+```
+
+### Magnetometer Data Rate
+
+At 200 Hz IMU, magnetometer data appears in every **4th packet** (~50 Hz).
+Identified by `byte[3]==0x3b && byte[7]==0x33`.
+
+### Sample Readings
+
+| Packet | mag_x | mag_y | mag_z | |mag| | imu_ts | mag_ts | delta |
+|--------|-------|-------|-------|------|--------|--------|-------|
+| #3 | 46.973 | 78.711 | -31.250 | 96.84 µT | 691995 | 689843 | 2152 |
+| #7 | 46.973 | 78.613 | -31.250 | 96.76 µT | 711918 | 709834 | 2084 |
+
+Magnitude ~97 µT is plausible for indoor environment with nearby metallic/magnetic materials.
+Earth's field is typically 25-65 µT; excess indicates local magnetic interference.
+
+### Updated Implementation Strategy
+
+```
+Minimum Viable 9DOF Reader:
+1. Set 200 Hz:   42 00 15 06 03 05 07 FF
+2. Enable IMU:   42 00 11 06 03 07 01 FF
+3. Enable mag:   42 00 1b 07 03 10 01 00 FF
+4. Read packets from interface 4
+5. For all packets: extract 6× float32 at byte[8] (acc + gyr)
+6. If byte[7]==0x33: also extract 3× float32 at byte[40] (mag)
+7. Disable: reverse order (mag off → IMU off)
+```
