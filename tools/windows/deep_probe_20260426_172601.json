@@ -1,0 +1,235 @@
+{
+  "timestamp": "2026-04-26T17:25:45.157667",
+  "vid": "0x2A45",
+  "pid": "0x2050",
+  "phase": "deep_probe",
+  "interfaces": [
+    {
+      "interface": 3,
+      "path": "\\\\?\\HID#VID_2A45&PID_2050&MI_03#7&1fa7ccaa&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+      "feature_reports": [],
+      "feature_activate": [
+        {
+          "name": "Feature ID=0x02 enable",
+          "sent": "02 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x02 stream",
+          "sent": "02 19 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 enable",
+          "sent": "01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 stream",
+          "sent": "01 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x03 enable",
+          "sent": "03 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x0A enable",
+          "sent": "0a 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 query",
+          "sent": "42 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 enable",
+          "sent": "42 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        }
+      ],
+      "input_reports": [],
+      "input_report_count": 0,
+      "status_analysis": [
+        {
+          "name": "all zeros",
+          "sent": "00 00 00 00 00 00 00 00",
+          "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "length": 64
+        },
+        {
+          "name": "query info",
+          "sent": "00 42",
+          "response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "length": 64
+        },
+        {
+          "name": "query version",
+          "sent": "00 56",
+          "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "length": 64
+        },
+        {
+          "name": "query sensor",
+          "sent": "00 53",
+          "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "length": 64
+        },
+        {
+          "name": "IMU config",
+          "sent": "00 49 01",
+          "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "length": 64
+        }
+      ]
+    },
+    {
+      "interface": 4,
+      "path": "\\\\?\\HID#VID_2A45&PID_2050&MI_04#7&376b58ef&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+      "feature_reports": [],
+      "feature_activate": [
+        {
+          "name": "Feature ID=0x02 enable",
+          "sent": "02 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x02 stream",
+          "sent": "02 19 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 enable",
+          "sent": "01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 stream",
+          "sent": "01 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x03 enable",
+          "sent": "03 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x0A enable",
+          "sent": "0a 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 query",
+          "sent": "42 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 enable",
+          "sent": "42 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        }
+      ],
+      "input_reports": [],
+      "input_report_count": 0
+    },
+    {
+      "interface": 5,
+      "path": "\\\\?\\HID#VID_2A45&PID_2050&MI_05#7&13941b2d&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}",
+      "feature_reports": [],
+      "feature_activate": [
+        {
+          "name": "Feature ID=0x02 enable",
+          "sent": "02 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x02 stream",
+          "sent": "02 19 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 enable",
+          "sent": "01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x01 stream",
+          "sent": "01 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x03 enable",
+          "sent": "03 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x0A enable",
+          "sent": "0a 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 query",
+          "sent": "42 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        },
+        {
+          "name": "Feature ID=0x42 enable",
+          "sent": "42 01 01",
+          "written": -1,
+          "responses": [],
+          "total_responses": 0
+        }
+      ],
+      "input_reports": [],
+      "input_report_count": 0
+    }
+  ]
+}
