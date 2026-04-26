@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-04-26T21:18:04.481217",
+  "phase": "mag_test",
+  "baseline_sample": "42 0c 82 27 03 02 66 03 bc 47 aa 3e b7 dc 41 c0 5b 1d 14 41 c1 89 2e 3c 04 b8 48 3c 51 e7 02 bc 8d 41 03 00 a3 01 00 00 ff 00",
+  "baseline_nonzero": 38,
+  "mag_sample": "42 11 b1 3b 03 02 8b 33 7c e1 bd 3e b4 54 40 c0 91 39 15 41 94 15 1d 3c b6 2c aa 3c 67 a1 0b bb 35 66 03 00 a7 01 00 00 00 34",
+  "mag_nonzero": 52,
+  "baseline_types": {
+    "cat=0x03,sub=0x02": 602
+  },
+  "mag_types": {
+    "cat=0x03,sub=0x02": 602
+  }
+}
