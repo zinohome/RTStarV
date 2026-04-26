@@ -1,0 +1,30 @@
+StarV View USB 原始探测 (VID=0x2A45 PID=0x2050)
+============================================================
+Traceback (most recent call last):
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 580, in <module>
+    main()
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 521, in main
+    dev = find_device()
+          ^^^^^^^^^^^^^
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 55, in find_device
+    dev = usb.core.find(idVendor=VID, idProduct=PID)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ibmzh\AppData\Local\Programs\Python\Python312\Lib\site-packages\usb\core.py", line 1321, in find
+    raise NoBackendError('No backend available')
+usb.core.NoBackendError: No backend available
+PS C:\Users\ibmzh\Documents\RTStarV\tools\windows> python usb_raw_probe.py
+StarV View USB 原始探测 (VID=0x2A45 PID=0x2050)
+============================================================
+Traceback (most recent call last):
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 580, in <module>
+    main()
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 521, in main
+    dev = find_device()
+          ^^^^^^^^^^^^^
+  File "C:\Users\ibmzh\Documents\RTStarV\tools\windows\usb_raw_probe.py", line 55, in find_device
+    dev = usb.core.find(idVendor=VID, idProduct=PID)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ibmzh\AppData\Local\Programs\Python\Python312\Lib\site-packages\usb\core.py", line 1321, in find
+    raise NoBackendError('No backend available')
+usb.core.NoBackendError: No backend available
+PS C:\Users\ibmzh\Documents\RTStarV\tools\windows>
