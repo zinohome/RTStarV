@@ -1,0 +1,33 @@
+; platform/windows/idd_driver/RTStarVDisplay.inf
+[Version]
+Signature   = "$Windows NT$"
+Class       = Display
+ClassGuid   = {4D36E968-E325-11CE-BFC1-08002BE10318}
+Provider    = %ManufacturerName%
+CatalogFile = RTStarVDisplay.cat
+DriverVer   = 04/27/2026,1.0.0.0
+PnpLockdown = 1
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName% = RTStarVDisplay_Install, Root\RTStarVDisplay
+
+[RTStarVDisplay_Install]
+; no files to copy
+
+[RTStarVDisplay_Install.Services]
+AddService = RTStarVDisplay,0x00000002,RTStarVDisplay_Service
+
+[RTStarVDisplay_Service]
+DisplayName   = %ServiceName%
+ServiceType   = 1 ; SERVICE_KERNEL_DRIVER
+StartType     = 3 ; SERVICE_DEMAND_START
+ErrorControl  = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary = %13%\RTStarVDisplay.sys
+
+[Strings]
+ManufacturerName = "RTStarV"
+DeviceName       = "RTStarV Virtual Display"
+ServiceName      = "RTStarV Virtual Display Driver"
