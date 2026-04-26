@@ -1,0 +1,600 @@
+{
+  "timestamp": "2026-04-26T20:39:09.090217",
+  "vid": "0x2A45",
+  "pid": "0x2050",
+  "phase": "imu_activate_probe",
+  "devices": [
+    {
+      "interface": 3,
+      "usage_page": "0xFF00",
+      "usage": "0x0001",
+      "product": "XGG010C"
+    },
+    {
+      "interface": 4,
+      "usage_page": "0xFF00",
+      "usage": "0x0001",
+      "product": "XGG010C"
+    },
+    {
+      "interface": 5,
+      "usage_page": "0x000C",
+      "usage": "0x0001",
+      "product": "XGG010C"
+    }
+  ],
+  "phase1_iface3": {
+    "packets": 0,
+    "summary": {},
+    "imu_found": false,
+    "samples": []
+  },
+  "phase2_iface3": [
+    {
+      "name": "A: cat=0x01 sub=0x6d enable@8",
+      "cmd_hex": "42 00 00 00 01 6d 00 00 01 00 00 00 00 00 00 00",
+      "total_packets": 1,
+      "imu_packets": 0,
+      "other_packets": 1,
+      "first_response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "response_summary": {
+        "EXTENDED_DATA(sub=0x01)": 1
+      }
+    },
+    {
+      "name": "B: cat=0x6d sub=0x01",
+      "cmd_hex": "42 00 00 00 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 1,
+      "imu_packets": 0,
+      "other_packets": 1,
+      "first_response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "response_summary": {
+        "EXTENDED_DATA(sub=0x01)": 1
+      }
+    },
+    {
+      "name": "C: 42 00 00 08 6d 01",
+      "cmd_hex": "42 00 00 08 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 1,
+      "imu_packets": 0,
+      "other_packets": 1,
+      "first_response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "response_summary": {
+        "EXTENDED_DATA(sub=0x01)": 1
+      }
+    },
+    {
+      "name": "D: 42 6d 01",
+      "cmd_hex": "42 6d 01 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 1,
+      "imu_packets": 0,
+      "other_packets": 1,
+      "first_response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "response_summary": {
+        "EXTENDED_DATA(sub=0x01)": 1
+      }
+    },
+    {
+      "name": "E: 42 00 6d 01",
+      "cmd_hex": "42 00 6d 01 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 14,
+      "imu_packets": 13,
+      "other_packets": 1,
+      "first_response": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "imu_sample": "42 0d 7d 2d 01 07 41 41 43 5f 4d 4f 44 45 20 75 70 64 61 74 65 3a 30 30 30 30 30 30 30 30 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+    }
+  ],
+  "estimated_sample_rate_hz": 6.3,
+  "phase5_analysis": [
+    {
+      "index": 0,
+      "time": 0.0,
+      "hex": "42 0d 7d 2d 01 07 41 41 43 5f 4d 4f 44 45 20 75 70 64 61 74 65 3a 30 30 30 30 30 30 30 30 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0D",
+        "byte2": "0x7D",
+        "byte3": "0x2D",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x41",
+        "byte7": "0x41"
+      }
+    },
+    {
+      "index": 1,
+      "time": 0.5603,
+      "hex": "42 0a fb 21 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 20 4c 6f 6e 67 20 43 6c 69 63 6b ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0A",
+        "byte2": "0xFB",
+        "byte3": "0x21",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    },
+    {
+      "index": 2,
+      "time": 0.8096,
+      "hex": "42 00 5b 07 07 01 03 07 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x5B",
+        "byte3": "0x07",
+        "category": "0x07",
+        "sub": "0x01",
+        "byte6": "0x03",
+        "byte7": "0x07"
+      }
+    },
+    {
+      "index": 3,
+      "time": 0.8114,
+      "hex": "42 0e c9 2b 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 43 66 67 2d 4c 6f 6e 67 2d 4c 69 67 68 74 69 6e 64 65 78 3a 36 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0E",
+        "byte2": "0xC9",
+        "byte3": "0x2B",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    },
+    {
+      "index": 4,
+      "time": 0.8114,
+      "hex": "42 11 6d 3e 01 07 5b 44 69 73 70 5d 50 61 6e 65 6c 20 73 65 74 20 72 65 67 31 32 20 3d 20 5b 30 78 30 5d 2c 72 65 67 31 33 20 3d 20 5b 30 78 37 62 5d 2c 4e 69 74 20 3d 20 5b 31 32 33 5d 0d ff",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x11",
+        "byte2": "0x6D",
+        "byte3": "0x3E",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x5B",
+        "byte7": "0x44"
+      }
+    },
+    {
+      "index": 5,
+      "time": 0.8127,
+      "hex": "42 00 5d 06 01 07 0d ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x5D",
+        "byte3": "0x06",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x0D",
+        "byte7": "0xFF"
+      }
+    },
+    {
+      "index": 6,
+      "time": 0.8143,
+      "hex": "42 07 c5 18 01 07 43 75 72 72 65 6e 74 4c 69 67 68 74 69 6e 64 65 78 3a 36 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x07",
+        "byte2": "0xC5",
+        "byte3": "0x18",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x43",
+        "byte7": "0x75"
+      }
+    },
+    {
+      "index": 7,
+      "time": 1.0591,
+      "hex": "42 00 5a 07 07 01 03 06 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x5A",
+        "byte3": "0x07",
+        "category": "0x07",
+        "sub": "0x01",
+        "byte6": "0x03",
+        "byte7": "0x06"
+      }
+    },
+    {
+      "index": 8,
+      "time": 1.061,
+      "hex": "42 0e c8 2b 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 43 66 67 2d 4c 6f 6e 67 2d 4c 69 67 68 74 69 6e 64 65 78 3a 35 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0E",
+        "byte2": "0xC8",
+        "byte3": "0x2B",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    },
+    {
+      "index": 9,
+      "time": 1.061,
+      "hex": "42 07 c4 18 01 07 43 75 72 72 65 6e 74 4c 69 67 68 74 69 6e 64 65 78 3a 35 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x07",
+        "byte2": "0xC4",
+        "byte3": "0x18",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x43",
+        "byte7": "0x75"
+      }
+    },
+    {
+      "index": 10,
+      "time": 1.2746,
+      "hex": "42 14 10 3d 01 07 5b 44 69 73 70 5d 44 69 73 70 5f 68 61 6e 64 6c 65 2e 44 69 73 70 6c 61 79 5f 42 72 69 67 68 74 6e 65 73 73 20 3d 20 30 78 36 2c 62 6c 5f 6c 76 6c 20 3d 20 30 78 36 0d ff 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x14",
+        "byte2": "0x10",
+        "byte3": "0x3D",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x5B",
+        "byte7": "0x44"
+      }
+    },
+    {
+      "index": 11,
+      "time": 1.2746,
+      "hex": "42 00 5d 06 01 07 0d ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x5D",
+        "byte3": "0x06",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x0D",
+        "byte7": "0xFF"
+      }
+    },
+    {
+      "index": 12,
+      "time": 1.2761,
+      "hex": "42 00 5a 07 07 01 03 06 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x5A",
+        "byte3": "0x07",
+        "category": "0x07",
+        "sub": "0x01",
+        "byte6": "0x03",
+        "byte7": "0x06"
+      }
+    },
+    {
+      "index": 13,
+      "time": 1.0427,
+      "hex": "42 06 bf 15 01 07 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e 44 6f 77 6e ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x06",
+        "byte2": "0xBF",
+        "byte3": "0x15",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x44",
+        "byte7": "0x6F"
+      }
+    },
+    {
+      "index": 14,
+      "time": 1.7821,
+      "hex": "42 0a fb 21 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 20 4c 6f 6e 67 20 43 6c 69 63 6b ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0A",
+        "byte2": "0xFB",
+        "byte3": "0x21",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    },
+    {
+      "index": 15,
+      "time": 2.0322,
+      "hex": "42 00 59 07 07 01 03 05 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x59",
+        "byte3": "0x07",
+        "category": "0x07",
+        "sub": "0x01",
+        "byte6": "0x03",
+        "byte7": "0x05"
+      }
+    },
+    {
+      "index": 16,
+      "time": 2.034,
+      "hex": "42 0e c7 2b 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 43 66 67 2d 4c 6f 6e 67 2d 4c 69 67 68 74 69 6e 64 65 78 3a 34 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0E",
+        "byte2": "0xC7",
+        "byte3": "0x2B",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    },
+    {
+      "index": 17,
+      "time": 2.034,
+      "hex": "42 07 c3 18 01 07 43 75 72 72 65 6e 74 4c 69 67 68 74 69 6e 64 65 78 3a 34 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x07",
+        "byte2": "0xC3",
+        "byte3": "0x18",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x43",
+        "byte7": "0x75"
+      }
+    },
+    {
+      "index": 18,
+      "time": 2.2825,
+      "hex": "42 00 58 07 07 01 03 04 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x00",
+        "byte2": "0x58",
+        "byte3": "0x07",
+        "category": "0x07",
+        "sub": "0x01",
+        "byte6": "0x03",
+        "byte7": "0x04"
+      }
+    },
+    {
+      "index": 19,
+      "time": 2.2843,
+      "hex": "42 0e c6 2b 01 07 42 72 69 67 68 74 6e 65 73 73 44 6f 77 6e 4b 65 79 43 66 67 2d 4c 6f 6e 67 2d 4c 69 67 68 74 69 6e 64 65 78 3a 33 ff 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "header": {
+        "magic": "0x42",
+        "byte1": "0x0E",
+        "byte2": "0xC6",
+        "byte3": "0x2B",
+        "category": "0x01",
+        "sub": "0x07",
+        "byte6": "0x42",
+        "byte7": "0x72"
+      }
+    }
+  ],
+  "phase1_iface4": {
+    "packets": 0,
+    "summary": {},
+    "imu_found": false,
+    "samples": []
+  },
+  "phase2_iface4": [
+    {
+      "name": "A: cat=0x01 sub=0x6d enable@8",
+      "cmd_hex": "42 00 00 00 01 6d 00 00 01 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "B: cat=0x6d sub=0x01",
+      "cmd_hex": "42 00 00 00 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "C: 42 00 00 08 6d 01",
+      "cmd_hex": "42 00 00 08 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "D: 42 6d 01",
+      "cmd_hex": "42 6d 01 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "E: 42 00 6d 01",
+      "cmd_hex": "42 00 6d 01 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "F: 42 00 00 08 01 6d 01",
+      "cmd_hex": "42 00 00 08 01 6d 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "G: 42 6d 00 00 01",
+      "cmd_hex": "42 6d 00 00 01 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "H: 42 00 08 05 01 6d 01",
+      "cmd_hex": "42 00 08 05 01 6d 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "I: raw 6d 01 (no magic)",
+      "cmd_hex": "6d 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "J: 42 00 6d 08 00 00 01",
+      "cmd_hex": "42 00 6d 08 00 00 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    }
+  ],
+  "phase3_iface4": [
+    {
+      "name": "set_imu_freq(100Hz): 42 00 00 00 20 64",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(200Hz): 42 00 00 00 20 c8",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(500Hz): 42 00 00 00 20 f4",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(1000Hz): 42 00 00 00 20 e8",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_accel_scale: 42 00 00 00 61 01",
+      "imu_found": false,
+      "packets": 0
+    }
+  ],
+  "phase1_iface5": {
+    "packets": 0,
+    "summary": {},
+    "imu_found": false,
+    "samples": []
+  },
+  "phase2_iface5": [
+    {
+      "name": "A: cat=0x01 sub=0x6d enable@8",
+      "cmd_hex": "42 00 00 00 01 6d 00 00 01 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "B: cat=0x6d sub=0x01",
+      "cmd_hex": "42 00 00 00 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "C: 42 00 00 08 6d 01",
+      "cmd_hex": "42 00 00 08 6d 01 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "D: 42 6d 01",
+      "cmd_hex": "42 6d 01 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "E: 42 00 6d 01",
+      "cmd_hex": "42 00 6d 01 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "F: 42 00 00 08 01 6d 01",
+      "cmd_hex": "42 00 00 08 01 6d 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "G: 42 6d 00 00 01",
+      "cmd_hex": "42 6d 00 00 01 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "H: 42 00 08 05 01 6d 01",
+      "cmd_hex": "42 00 08 05 01 6d 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "I: raw 6d 01 (no magic)",
+      "cmd_hex": "6d 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    },
+    {
+      "name": "J: 42 00 6d 08 00 00 01",
+      "cmd_hex": "42 00 6d 08 00 00 01 00 00 00 00 00 00 00 00 00",
+      "total_packets": 0,
+      "imu_packets": 0,
+      "other_packets": 0
+    }
+  ],
+  "phase3_iface5": [
+    {
+      "name": "set_imu_freq(100Hz): 42 00 00 00 20 64",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(200Hz): 42 00 00 00 20 c8",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(500Hz): 42 00 00 00 20 f4",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_imu_freq(1000Hz): 42 00 00 00 20 e8",
+      "imu_found": false,
+      "packets": 0
+    },
+    {
+      "name": "set_accel_scale: 42 00 00 00 61 01",
+      "imu_found": false,
+      "packets": 0
+    }
+  ]
+}
