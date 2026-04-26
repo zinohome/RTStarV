@@ -1,0 +1,1608 @@
+{
+  "timestamp": "2026-04-26T17:37:51.013126",
+  "vid": "0x2A45",
+  "pid": "0x2050",
+  "phase": "hid_protocol_probe",
+  "interface3": {
+    "interface": 3,
+    "baseline_response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00",
+    "interesting_commands": [
+      {
+        "cmd_id": "0x42",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00",
+        "diff_bytes": [
+          {
+            "offset": 2,
+            "baseline": "0x75",
+            "current": "0x7B"
+          },
+          {
+            "offset": 8,
+            "baseline": "0x01",
+            "current": "0x07"
+          }
+        ]
+      }
+    ],
+    "subcmd_results": [
+      {
+        "cmd": "0x42",
+        "sub": "0x00",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x01",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x02",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x03",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x04",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x05",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x06",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x07",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x08",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x09",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0A",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0B",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0C",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0D",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0E",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x0F",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x10",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x11",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x12",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x13",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x14",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x15",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x16",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x17",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x18",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x19",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1A",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1B",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1C",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1D",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1E",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x1F",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x20",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x21",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x22",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x23",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x24",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x25",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x26",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x27",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x28",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x29",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2A",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2B",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2C",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2D",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2E",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x2F",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x30",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      },
+      {
+        "cmd": "0x42",
+        "sub": "0x31",
+        "response_prefix": "42 00 7b 08 29 01 00 00 07 ff 00 00 00 00 00 00"
+      }
+    ],
+    "output_report_id_scan_3": [
+      {
+        "report_id": "0x00",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x01",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x02",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x03",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x04",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x05",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x06",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x07",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x08",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x09",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x0F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x10",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x11",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x12",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x13",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x14",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x15",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x16",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x17",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x18",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x19",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x1F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x20",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x21",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x22",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x23",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x24",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x25",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x26",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x27",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x28",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x29",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x2F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x30",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x31",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x32",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x33",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x34",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x35",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x36",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x37",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x38",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x39",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x3F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x40",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x41",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x42",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x43",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x44",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x45",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x46",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x47",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x48",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x49",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x4F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x50",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x51",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x52",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x53",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x54",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x55",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x56",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x57",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x58",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x59",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x5F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x60",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x61",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x62",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x63",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x64",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x65",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x66",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x67",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x68",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x69",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x6F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x70",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x71",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x72",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x73",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x74",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x75",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x76",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x77",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x78",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x79",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x7F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x80",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x81",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x82",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x83",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x84",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x85",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x86",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x87",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x88",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x89",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x8F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x90",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x91",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x92",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x93",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x94",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x95",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x96",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x97",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x98",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x99",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9A",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9B",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9C",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9D",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9E",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0x9F",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xA9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAD",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xAF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xB9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBD",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xBF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xC9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCD",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xCF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xD9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDD",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xDF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xE9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xEA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xEB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xEC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xED",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xEE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xEF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF0",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF1",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF2",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF3",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF4",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF5",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF6",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF7",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF8",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xF9",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFA",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFB",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFC",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFD",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFE",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      },
+      {
+        "report_id": "0xFF",
+        "written": 65,
+        "response": "42 00 75 08 29 01 00 00 01 ff 00 00 00 00 00 00"
+      }
+    ]
+  },
+  "interface4": {
+    "interface": 4,
+    "output_report_id_scan_4": []
+  },
+  "interface5": {
+    "interface": 5,
+    "long_listen_packets": [],
+    "long_listen_total": 0,
+    "interface5_write_results": [
+      {
+        "name": "Report ID=0",
+        "sent": "00 02 19 01",
+        "written": -1,
+        "responses": [],
+        "total": 0
+      },
+      {
+        "name": "Report ID=1",
+        "sent": "01 02 19 01",
+        "written": -1,
+        "responses": [],
+        "total": 0
+      },
+      {
+        "name": "Report ID=2",
+        "sent": "02 19 01",
+        "written": -1,
+        "responses": [],
+        "total": 0
+      },
+      {
+        "name": "Short 0x01",
+        "sent": "00 01",
+        "written": -1,
+        "responses": [],
+        "total": 0
+      },
+      {
+        "name": "Meizu IMU",
+        "sent": "00 42 02 01",
+        "written": -1,
+        "responses": [],
+        "total": 0
+      }
+    ]
+  }
+}
