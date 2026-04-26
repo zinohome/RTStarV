@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-04-26T21:08:36.646320",
+  "phase": "freq_test",
+  "results": [
+    {
+      "target_hz": 12,
+      "code": "0x0B",
+      "cmd": "42 00 19 06 03 05 0b ff",
+      "packets": 63,
+      "measured_hz": 12.6
+    },
+    {
+      "target_hz": 25,
+      "code": "0x0A",
+      "cmd": "42 00 18 06 03 05 0a ff",
+      "packets": 126,
+      "measured_hz": 25.1
+    },
+    {
+      "target_hz": 50,
+      "code": "0x09",
+      "cmd": "42 00 17 06 03 05 09 ff",
+      "packets": 251,
+      "measured_hz": 50.2
+    },
+    {
+      "target_hz": 100,
+      "code": "0x08",
+      "cmd": "42 00 16 06 03 05 08 ff",
+      "packets": 502,
+      "measured_hz": 100.4
+    },
+    {
+      "target_hz": 200,
+      "code": "0x07",
+      "cmd": "42 00 15 06 03 05 07 ff",
+      "packets": 1003,
+      "measured_hz": 200.8
+    }
+  ]
+}
