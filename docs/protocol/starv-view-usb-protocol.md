@@ -2,7 +2,7 @@
 
 > Source: `libsv_hid.so` (457KB ARM64, SunnyVerse SDK)  
 > Date: 2026-04-26  
-> Status: Confirmed via static binary analysis (no live device validation yet)
+> Status: **VALIDATED** — IMU data stream confirmed on live device (2026-04-26)
 
 ---
 
@@ -289,28 +289,87 @@ StarV View and Xreal Air share the same SunnyVerse SDK. Key similarities and dif
 ### Minimum Viable IMU Reader
 
 ```
-1. Open USB device (VID=0x2A45, PID=0x2050)
-2. Claim interface 3 (or 4, try both)
-3. Send IMU enable command (cmd 0x6d) to EP 0x03
-4. Read 64-byte packets from EP 0x81 (and/or 0x83)
-5. Filter for packets with byte[0]==0x42, byte[4]==0x01
-6. Extract float32 values from bytes 8+ (candidate offsets)
-7. Monitor for FRAME LOST via sequence counter
+1. Open USB HID device (VID=0x2A45, PID=0x2050)
+2. Open interface 3 for commands, interface 4 for IMU data
+3. Send IMU enable: 42 00 11 06 03 07 01 FF to interface 3
+4. Read 64-byte packets from interface 4
+5. Filter for packets with byte[0]==0x42, byte[4]==0x03, byte[5]==0x02
+6. Extract 6× float32 LE from byte[8]: acc_xyz + gyr_xyz
+7. Monitor sequence counter at byte[6] for frame loss
 ```
 
-### What Needs Live Validation
+### Remaining Questions
 
-1. **Exact raw byte offsets** for sensor values within the 64-byte packet
-2. **Command buffer format** for cmd 0x6d (enable IMU) — what bytes to send
-3. **Which USB interface** to claim (3 vs 4 vs both)
-4. **Which IN endpoint** carries IMU data (0x81 vs 0x83 vs 0x85)
-5. **IMU sample rate** and how to set it via cmd 0x20
-6. **Coordinate system** (right-hand? which axis is up?)
+1. **IMU sample rate** default is ~12.6 Hz — needs cmd 0x20 to increase
+2. **Coordinate system** convention (which axis is up/forward)
+3. **Magnetometer data** — not seen in current packets, may need different enable
+4. **Timestamp unit** at byte[32-35] — microseconds? milliseconds?
 
-### Validation Approach
+## 9. Live Validation Results (2026-04-26)
 
-Build a minimal USB sniffer that:
-1. Enumerates all interfaces and endpoints
-2. Claims interface 3, reads packets, identifies IMU data by 0x42 header
-3. Hexdumps first 20 IMU packets for byte-level analysis
-4. Tries sending cmd 0x6d buffer (all zeros + enable flag) to trigger IMU stream
+### Device Identity (Confirmed)
+
+| Field | Value |
+|-------|-------|
+| Product String | XGG010C |
+| HID Interfaces | 3 (command), 4 (IMU data), 5 (consumer control) |
+| Usage Page | 0xFF00 (Vendor Specific) for interfaces 3 & 4 |
+
+### IMU Enable Command (CONFIRMED)
+
+```
+42 00 11 06 03 07 01 FF
+│  │  │  │  │  │  │  └─ 0xFF terminator
+│  │  │  │  │  │  └──── 0x01 enable flag (0x00 = disable)
+│  │  │  │  │  └─────── 0x07 routing byte 3
+│  │  │  │  └────────── 0x03 routing byte 2
+│  │  │  └───────────── 0x06 routing byte 1
+│  │  └──────────────── 0x11 checksum low  (sum of byte[3..6] & 0xFF)
+│  └─────────────────── 0x00 checksum high (sum of byte[3..6] >> 8)
+└────────────────────── 0x42 magic
+```
+
+Checksum: `0x06 + 0x03 + 0x07 + 0x01 = 0x0011` → high=0x00, low=0x11
+
+Send via HID write to **interface 3** (prepend Report ID 0x00).
+
+### IMU Data Packet Format (CONFIRMED)
+
+Received on **interface 4**, category `0x03`, sub `0x02`:
+
+```
+Offset  Size    Field              Confirmed Value
+0       1       magic              0x42
+1       1       checksum_high      varies
+2       1       checksum_low       varies
+3       1       byte3              0x27 (packet length?)
+4       1       category           0x03
+5       1       sub_category       0x02
+6       1       sequence           0x84..0xFF (wrapping counter)
+7       1       byte7              0x03
+8       4       acc_x (float32 LE) ✓ 0.1196 m/s² (sample)
+12      4       acc_y (float32 LE) ✓ -1.7299 m/s²
+16      4       acc_z (float32 LE) ✓ 9.6137 m/s²  (gravity!)
+20      4       gyr_x (float32 LE) ✓ 0.0607 rad/s
+24      4       gyr_y (float32 LE) ✓ 0.0165 rad/s
+28      4       gyr_z (float32 LE) ✓ -0.0192 rad/s
+32      4       timestamp (u32 LE) 166927 (unit TBD)
+36      1       status_byte        0xA1
+37      1       sub_status         0x01
+38-39   2       padding            0x0000
+40      1       terminator         0xFF
+41-63   23      padding            0x00
+```
+
+**Validation**: |acc| = 9.77 m/s² ≈ g (9.81), |gyr| = 0.066 rad/s ≈ 0 (stationary).
+
+### Corrections to Initial RE Analysis
+
+| Original Assumption | Actual Finding |
+|---------------------|---------------|
+| IMU packets: cat=0x01, sub=0x06/0x02 | **cat=0x03, sub=0x02** |
+| Command sends on interface 3 or 4 | **Commands: interface 3, Data: interface 4** |
+| Raw byte layout was speculative | **Confirmed: float32 at byte[8], 6 values** |
+| Command format unknown | **42 SS CC 06 03 07 XX FF** |
+| 0x42 magic only in responses | **0x42 in BOTH commands and responses** |
+| Sample rate unknown | **Default ~12.6 Hz** |
