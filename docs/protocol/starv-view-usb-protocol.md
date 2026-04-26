@@ -300,7 +300,7 @@ StarV View and Xreal Air share the same SunnyVerse SDK. Key similarities and dif
 
 ### Remaining Questions
 
-1. **IMU sample rate** default is ~12.6 Hz — needs cmd 0x20 to increase
+1. ~~**IMU sample rate**~~ — **SOLVED**, see section 9 below
 2. **Coordinate system** convention (which axis is up/forward)
 3. **Magnetometer data** — not seen in current packets, may need different enable
 4. **Timestamp unit** at byte[32-35] — microseconds? milliseconds?
@@ -372,4 +372,48 @@ Offset  Size    Field              Confirmed Value
 | Raw byte layout was speculative | **Confirmed: float32 at byte[8], 6 values** |
 | Command format unknown | **42 SS CC 06 03 07 XX FF** |
 | 0x42 magic only in responses | **0x42 in BOTH commands and responses** |
-| Sample rate unknown | **Default ~12.6 Hz** |
+| Sample rate unknown | **Default ~12.6 Hz, max 200 Hz** |
+
+### IMU Frequency Control (CONFIRMED)
+
+Command 0x20 (`sv_hid_set_imu_frequency`), packet format:
+
+```
+42 SS CC 06 03 05 XX FF
+```
+
+Routing bytes `06 03 05` (vs `06 03 07` for IMU enable). XX is a frequency code:
+
+| Frequency | Code | Command Packet | Measured |
+|-----------|------|----------------|----------|
+| 200 Hz | 0x07 | `42 00 15 06 03 05 07 ff` | **200.8 Hz** ✓ |
+| 100 Hz | 0x08 | `42 00 16 06 03 05 08 ff` | **100.4 Hz** ✓ |
+| 50 Hz | 0x09 | `42 00 17 06 03 05 09 ff` | **50.2 Hz** ✓ |
+| 25 Hz | 0x0A | `42 00 18 06 03 05 0a ff` | **25.1 Hz** ✓ |
+| 12.5 Hz | 0x0B | `42 00 19 06 03 05 0b ff` | **12.6 Hz** ✓ (default) |
+
+All 5 frequency settings validated on live device. Codes >= 500 Hz map to 0x00 (invalid).
+
+Sequence: set frequency first (cmd 0x20), then enable IMU (cmd 0x6d).
+
+### Universal Command Packet Format
+
+All commands share the same 8-byte structure:
+
+```
+42 SS CC 06 03 RR VV FF
+│  │  │  │  │  │  │  └─ 0xFF terminator
+│  │  │  │  │  │  └──── value byte (command-specific)
+│  │  │  │  │  └─────── routing byte 3 (selects command type)
+│  │  │  │  └────────── 0x03 routing byte 2 (fixed)
+│  │  │  └───────────── 0x06 routing byte 1 (fixed)
+│  │  └──────────────── checksum low  (sum of byte[3..6] & 0xFF)
+│  └─────────────────── checksum high (sum of byte[3..6] >> 8)
+└────────────────────── 0x42 magic
+```
+
+Known routing byte 3 values:
+| RR | Command | Value byte |
+|----|---------|-----------|
+| 0x05 | Set IMU frequency (cmd 0x20) | Frequency code (0x07-0x0B) |
+| 0x07 | Enable/disable IMU (cmd 0x6d) | 0x01=enable, 0x00=disable |
