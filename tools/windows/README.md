@@ -19,27 +19,18 @@ pip install hidapi
 
 ### Step 1：找到 StarV View 的 VID/PID
 
-**1.1 先不要连接眼镜**，在 PowerShell 中 cd 到脚本目录，运行：
+在 PowerShell 中 cd 到脚本目录，运行：
 
 ```powershell
-python usb_enumerate.py > before.txt
+python usb_diff.py
 ```
 
-**1.2 用 USB-C 线连接 StarV View 到电脑**，等待 3 秒让系统识别，再运行：
+脚本会引导你：
+1. 确认眼镜未连接 → 按回车
+2. 连接眼镜 → 按回车
+3. 自动对比，显示新增设备的 VID 和 PID
 
-```powershell
-python usb_enumerate.py > after.txt
-```
-
-**1.3 对比两个文件**：
-
-```powershell
-Compare-Object (Get-Content before.txt) (Get-Content after.txt)
-```
-
-输出中带 `=>` 标记的就是新增设备（StarV View）。可能会有多条记录，这是因为同一个设备有多个 USB 接口（显示、音频、传感器等），这是正常的。
-
-**1.4 记下 VID 和 PID**。例如看到 `VID=0x2E04 PID=0x0301`，把这两个十六进制值记下来。所有新增记录的 VID/PID 应该是相同的。
+记下脚本输出的 VID 和 PID 值。
 
 ---
 
