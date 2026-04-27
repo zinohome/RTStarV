@@ -26,6 +26,7 @@ bool VirtualDisplay::init() {
     SetupDiGetDeviceInterfaceDetailW(devInfo, &ifData, nullptr, 0, &size, nullptr);
 
     auto* detail = (SP_DEVICE_INTERFACE_DETAIL_DATA_W*)malloc(size);
+    if (!detail) { SetupDiDestroyDeviceInfoList(devInfo); return false; }
     detail->cbSize = sizeof(SP_DEVICE_INTERFACE_DETAIL_DATA_W);
     SetupDiGetDeviceInterfaceDetailW(devInfo, &ifData, detail, size, nullptr, nullptr);
 

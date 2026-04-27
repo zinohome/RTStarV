@@ -9,6 +9,7 @@ static NTSTATUS AddMonitor(DeviceContext* ctx, UINT width, UINT height) {
     mon.width = width;
     mon.height = height;
     mon.running = true;
+    mon.parent = ctx;
 
     IDDCX_MONITOR_INFO info = {};
     info.Size = sizeof(info);

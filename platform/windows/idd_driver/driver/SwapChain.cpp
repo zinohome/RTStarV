@@ -56,38 +56,57 @@ static DWORD WINAPI SwapChainThread(LPVOID param) {
     return 0;
 }
 
-NTSTATUS EvtMonitorAssignSwapChain(IDDCX_MONITOR Monitor, const IDARG_IN_SETSWAPCHAIN* pIn) {
-    UNREFERENCED_PARAMETER(Monitor);
+static MonitorContext* FindMonitor(DeviceContext* ctx, IDDCX_MONITOR Monitor) {
+    for (int i = 0; i < ctx->monitor_count; i++)
+        if (ctx->monitors[i].monitor_handle == Monitor)
+            return &ctx->monitors[i];
+    return nullptr;
+}
 
-    auto device = WdfObjectGetTypedContext<DeviceContext>(WdfObjectContextGetObject(Monitor));
+NTSTATUS EvtMonitorAssignSwapChain(IDDCX_MONITOR Monitor, const IDARG_IN_SETSWAPCHAIN* pIn) {
+    // Scan all device contexts to find matching monitor (via parent back-pointer)
+    // In practice, the first monitor's parent gives us the DeviceContext
+    // We iterate to find which MonitorContext owns this IDDCX_MONITOR
+    DeviceContext* device = nullptr;
+
+    // Use WdfDeviceGetContext on the adapter's parent WDF device
+    // IddCx objects are WDF children, so we walk up the object hierarchy
+    WDFOBJECT parent = WdfObjectGetParentObject(Monitor);
+    while (parent) {
+        device = GetDeviceContext((WDFDEVICE)parent);
+        if (device) break;
+        parent = WdfObjectGetParentObject(parent);
+    }
     if (!device) return STATUS_SUCCESS;
 
-    for (int i = 0; i < device->monitor_count; i++) {
-        if (device->monitors[i].monitor_handle == Monitor) {
-            device->monitors[i].swapchain_handle = pIn->hSwapChain;
-            device->monitors[i].running = true;
-            device->monitors[i].thread_handle = CreateThread(
-                nullptr, 0, SwapChainThread, &device->monitors[i], 0, nullptr);
-            break;
-        }
+    auto* mon = FindMonitor(device, Monitor);
+    if (mon) {
+        mon->swapchain_handle = pIn->hSwapChain;
+        mon->running = true;
+        mon->thread_handle = CreateThread(
+            nullptr, 0, SwapChainThread, mon, 0, nullptr);
     }
 
     return STATUS_SUCCESS;
 }
 
 NTSTATUS EvtMonitorUnassignSwapChain(IDDCX_MONITOR Monitor) {
-    auto device = WdfObjectGetTypedContext<DeviceContext>(WdfObjectContextGetObject(Monitor));
+    DeviceContext* device = nullptr;
+    WDFOBJECT parent = WdfObjectGetParentObject(Monitor);
+    while (parent) {
+        device = GetDeviceContext((WDFDEVICE)parent);
+        if (device) break;
+        parent = WdfObjectGetParentObject(parent);
+    }
     if (!device) return STATUS_SUCCESS;
 
-    for (int i = 0; i < device->monitor_count; i++) {
-        if (device->monitors[i].monitor_handle == Monitor) {
-            device->monitors[i].running = false;
-            if (device->monitors[i].thread_handle) {
-                WaitForSingleObject(device->monitors[i].thread_handle, 1000);
-                CloseHandle(device->monitors[i].thread_handle);
-                device->monitors[i].thread_handle = nullptr;
-            }
-            break;
+    auto* mon = FindMonitor(device, Monitor);
+    if (mon) {
+        mon->running = false;
+        if (mon->thread_handle) {
+            WaitForSingleObject(mon->thread_handle, 1000);
+            CloseHandle(mon->thread_handle);
+            mon->thread_handle = nullptr;
         }
     }
 

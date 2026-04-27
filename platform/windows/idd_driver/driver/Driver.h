@@ -13,6 +13,8 @@ DEFINE_GUID(GUID_RTSTARV_DISPLAY,
 #define IOCTL_RTSTARV_ADD_MONITOR    CTL_CODE(FILE_DEVICE_UNKNOWN, 0x801, METHOD_BUFFERED, FILE_ANY_ACCESS)
 #define IOCTL_RTSTARV_REMOVE_MONITOR CTL_CODE(FILE_DEVICE_UNKNOWN, 0x802, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
+struct DeviceContext; // forward decl
+
 struct MonitorContext {
     IDDCX_MONITOR monitor_handle;
     IDDCX_SWAPCHAIN swapchain_handle;
@@ -20,6 +22,7 @@ struct MonitorContext {
     bool running;
     UINT width;
     UINT height;
+    DeviceContext* parent;
 };
 
 struct DeviceContext {
