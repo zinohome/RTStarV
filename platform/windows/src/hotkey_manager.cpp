@@ -1,5 +1,6 @@
 // platform/windows/src/hotkey_manager.cpp
 #include "hotkey_manager.h"
+#include <initializer_list>
 
 bool HotkeyManager::init(HWND hwnd) {
     hwnd_ = hwnd;

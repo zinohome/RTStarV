@@ -1,5 +1,6 @@
 // platform/windows/src/virtual_display.cpp
 #include "virtual_display.h"
+#include <cstdlib>
 #include <setupapi.h>
 #include <initguid.h>
 
